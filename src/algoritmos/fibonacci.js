@@ -17,9 +17,14 @@ function gerarFibonacci(quantidade) {
 
   for (let indice = 0; indice < quantidade; indice += 1) {
     sequencia.push(anterior);
-    const proximo = anterior + atual;
-    anterior = atual;
-    atual = proximo;
+
+    // Evita calcular desnecessariamente o próximo termo após o último pedido.
+    // Para 79 termos, esse cálculo excederia a faixa de inteiros seguros.
+    if (indice < quantidade - 1) {
+      const proximo = anterior + atual;
+      anterior = atual;
+      atual = proximo;
+    }
   }
 
   return sequencia;
