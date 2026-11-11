@@ -1,93 +1,135 @@
-# Entregável #4 — Código limpo e testes unitários (UNIFOR)
+# Entregável 4 — Código Limpo e Testes Unitários
 
-Projeto de **Algoritmos Fundamentais** em JavaScript, refatorado a partir da [Atividade #1](https://github.com/Ruan-levi/Entregavel1-JavaScript). Os seis algoritmos estão separados em funções reutilizáveis e são testados com **Jest**.
+[![Testes Jest](https://github.com/Ruan-levi/Entregavel4-Ambientes/actions/workflows/testes.yml/badge.svg)](https://github.com/Ruan-levi/Entregavel4-Ambientes/actions/workflows/testes.yml)
 
-## Requisitos
+**UNIFOR · Algoritmos Fundamentais · JavaScript · Node.js · Jest · GitHub Actions**
 
-- Node.js 20 ou superior
-- npm
+Este projeto dá continuidade ao [Entregável 1](https://github.com/Ruan-levi/Entregavel1-JavaScript). Foram reaproveitados os **seis algoritmos fundamentais em JavaScript**, reorganizados em funções independentes, com validação de dados e testes unitários automatizados.
 
-## Como instalar e executar os testes
+> **Resultado conferido:** 6 arquivos de testes e **40 testes aprovados** no GitHub Actions. Consulte a [execução da versão sincronizada](https://github.com/Ruan-levi/Entregavel4-Ambientes/actions/runs/43064836191). As execuções posteriores podem ser acompanhadas na [aba Actions](https://github.com/Ruan-levi/Entregavel4-Ambientes/actions).
 
-Abra um terminal na pasta do projeto e execute:
+## Comece aqui
+
+| Preciso... | Acesse |
+| --- | --- |
+| Executar e demonstrar a atividade no VS Code | [Guia de apresentação](docs/APRESENTACAO_VSCODE.md) |
+| Conferir cada requisito da atividade | [Checklist do entregável](docs/REQUISITOS.md) |
+| Ler ou modificar os algoritmos | [src/algoritmos](src/algoritmos) |
+| Ler os testes unitários | [tests](tests) |
+| Ver a verificação automática no GitHub | [Actions](https://github.com/Ruan-levi/Entregavel4-Ambientes/actions) |
+
+## 1. Executar o projeto (passo a passo)
+
+**Pré-requisitos:** [Node.js](https://nodejs.org/) versão 20 ou superior, npm e, para acompanhar o código, [Visual Studio Code](https://code.visualstudio.com/).
+
+No terminal do VS Code, dentro da pasta clonada do repositório:
 
 ```bash
+git clone https://github.com/Ruan-levi/Entregavel4-Ambientes.git
+cd Entregavel4-Ambientes
 npm install
 npm test
 ```
 
-O comando `npm test` executa automaticamente todos os arquivos `tests/*.test.js`.
+Se você já abriu essa pasta no VS Code, execute **somente** `npm install` e `npm test` no terminal dessa pasta.
 
-Para executar os exemplos dos algoritmos:
+**Windows/PowerShell:** caso apareça a mensagem `npm.ps1 não pode ser carregado`, utilize `npm.cmd install` e `npm.cmd test` sem alterar as políticas de segurança.
+
+Para mostrar os algoritmos funcionando com os exemplos da Atividade 1:
 
 ```bash
 npm run exemplo
 ```
 
-## Algoritmos fundamentais
+Para visualizar a cobertura dos testes:
 
-| Algoritmo | Arquivo | O que faz |
-| --- | --- | --- |
-| Número primo | `src/algoritmos/numeroPrimo.js` | Verifica se um inteiro é primo |
-| Somatório | `src/algoritmos/somatorio.js` | Soma os números de um vetor |
-| Fibonacci | `src/algoritmos/fibonacci.js` | Gera a quantidade pedida de termos |
-| MDC | `src/algoritmos/mdc.js` | Calcula o máximo divisor comum |
-| QuickSort | `src/algoritmos/quickSort.js` | Ordena números sem alterar a lista recebida |
-| Contagem | `src/algoritmos/contagemInteiros.js` | Conta quantos elementos são inteiros |
-
-## Organização dos testes
-
-Há um arquivo de teste Jest para cada um dos **6 algoritmos**, contendo **pelo menos dois cenários**, incluindo resultados esperados, casos-limite e entradas inválidas.
-
-```text
-src/
-  validacoes.js
-  algoritmos/
-    numeroPrimo.js
-    somatorio.js
-    fibonacci.js
-    mdc.js
-    quickSort.js
-    contagemInteiros.js
-  index.js
-tests/
-  numeroPrimo.test.js
-  somatorio.test.js
-  fibonacci.test.js
-  mdc.test.js
-  quickSort.test.js
-  contagemInteiros.test.js
-examples/
-  executar.js
-.github/workflows/
-  testes.yml
-package.json
-jest.config.cjs
+```bash
+npm run test:coverage
 ```
 
-## Programação defensiva e código limpo
+> Para cumprir o enunciado, **os dois comandos indispensáveis são `npm install` e `npm test`**. Não é preciso iniciar um servidor, abrir uma página ou configurar banco de dados.
 
-- Variáveis e funções com nomes claros e responsabilidade definida.
-- Validação de tipo, números finitos, inteiros seguros e parâmetros obrigatórios.
-- Exceções com mensagens objetivas para entradas incorretas.
-- Casos especiais tratados explicitamente (vetor vazio, número 0, negativos e duplicatas).
-- Funções sem `console.log` ou interação com a interface (os exemplos ficam separados).
-- QuickSort retorna um **novo vetor**, preservando os dados do chamador.
-- Testes automatizados também rodam no **GitHub Actions** a cada push e pull request.
+## 2. Algoritmos revisados
 
-## Compatibilidade e exemplos da Atividade #1
+| Algoritmo | O que ele faz | Exemplo real |
+| --- | --- | --- |
+| [Número primo](src/algoritmos/numeroPrimo.js) | Verifica se um número inteiro é primo | `ehPrimo(11)` → `true` |
+| [Somatório](src/algoritmos/somatorio.js) | Soma os elementos de uma lista numérica | `somatorio([2,5,8,10,15])` → `40` |
+| [Fibonacci](src/algoritmos/fibonacci.js) | Gera os primeiros termos da sequência | `gerarFibonacci(5)` → `[0,1,1,2,3]` |
+| [MDC](src/algoritmos/mdc.js) | Calcula o máximo divisor comum | `mdc(87,36)` → `3` |
+| [QuickSort](src/algoritmos/quickSort.js) | Ordena uma lista sem alterar a original | `quickSort([3,1,2])` → `[1,2,3]` |
+| [Contagem de inteiros](src/algoritmos/contagemInteiros.js) | Conta valores inteiros em uma lista | `contarInteiros([1,2.5,3])` → `2` |
 
-- Número primo: `ehPrimo(11) === true`
-- Somatório: `somatorio([2, 5, 8, 10, 15]) === 40`
-- Fibonacci (10 termos): `gerarFibonacci(10)` → `[0,1,1,2,3,5,8,13,21,34]`
-- MDC: `mdc(87, 36) === 3`
-- QuickSort: `quickSort([8,3,6,1,10,2,5])` → `[1,2,3,5,6,8,10]`
-- Contagem: `contarInteiros([3,5,1,8,4,6,3.3,2,7.5]) === 7`
+As versões iniciais desses algoritmos estão no [repositório da Atividade 1](https://github.com/Ruan-levi/Entregavel1-JavaScript/tree/main/JavaScript). Os programas Java dessa atividade não foram alterados, pois este entregável exige **npm e Jest**, ferramentas usadas para testar o código JavaScript.
 
-**Observação:** para Fibonacci são aceitos de 0 a 79 termos, evitando resultados acima do limite de inteiros seguros do JavaScript. O MDC de `(0,0)` é indefinido e gera exceção.
+## 3. Testes Jest
 
-## Entrega
+Cada algoritmo possui um arquivo de testes com **pelo menos dois cenários**, conforme solicitado. Além de validar os exemplos, os testes verificam situações especiais e entradas incorretas.
 
-- **Atividade:** Entregável #4 — Código limpo e sincronizado no GitHub
-- **Origem:** [Entregável #1 — JavaScript](https://github.com/Ruan-levi/Entregavel1-JavaScript)
-- **Repositório:** [Entregavel4-Ambientes](https://github.com/Ruan-levi/Entregavel4-Ambientes)
+| Arquivo | Quantidade de testes | Exemplos de validação |
+| --- | ---: | --- |
+| [numeroPrimo.test.js](tests/numeroPrimo.test.js) | 6 | Número primo, composto, valores não inteiros |
+| [somatorio.test.js](tests/somatorio.test.js) | 7 | Soma normal, lista vazia, valores inválidos |
+| [fibonacci.test.js](tests/fibonacci.test.js) | 6 | Sequência normal, zero termos, limites |
+| [mdc.test.js](tests/mdc.test.js) | 7 | MDC correto, negativos, operação indefinida |
+| [quickSort.test.js](tests/quickSort.test.js) | 7 | Ordenação, repetidos, vetor original intacto |
+| [contagemInteiros.test.js](tests/contagemInteiros.test.js) | 7 | Inteiros e decimais, negativos, entradas inválidas |
+| **Total** | **40** | **6 suítes** |
+
+Exemplo do arquivo de testes de MDC:
+
+```javascript
+test("calcula MDC de 87 e 36, como na Atividade 1", () => {
+  expect(mdc(87, 36)).toBe(3);
+});
+```
+
+O `test` define o comportamento esperado; `expect` executa a função; `toBe` compara o retorno com o valor correto. O Jest também testa exceções com `toThrow`.
+
+## 4. Clean Code e programação defensiva
+
+- **Nomes significativos:** `primeiroNumero`, `quantidadeDeInteiros`, `validarListaNumeros`.
+- **Separação de responsabilidades:** um módulo por algoritmo; validações reutilizáveis em [src/validacoes.js](src/validacoes.js).
+- **Tratamento de erros:** `TypeError` quando o tipo é inválido e `RangeError` quando o valor está fora das restrições.
+- **Limites e casos especiais:** vetores vazios, zero, negativos, números repetidos e faixa de inteiros seguros.
+- **Funções testáveis:** cálculos não dependem da interface, de entrada interativa ou do terminal.
+- **Não alterar entradas:** o QuickSort retorna um **novo array**, preservando o vetor recebido.
+
+Por exemplo, `mdc(0, 0)` gera uma exceção clara, em vez de apresentar um resultado sem significado matemático. No Fibonacci, o limite de 79 termos evita valores fora da faixa de inteiros seguros do JavaScript.
+
+## 5. Organização dos arquivos
+
+```text
+Entregavel4-Ambientes/
+├── src/
+│   ├── algoritmos/             # As seis funções principais
+│   ├── validacoes.js           # Validações compartilhadas
+│   └── index.js                # Exportação das funções
+├── tests/                      # Seis arquivos de testes Jest
+├── examples/
+│   └── executar.js             # Demonstração dos exemplos da Atividade 1
+├── docs/
+│   ├── APRESENTACAO_VSCODE.md  # Roteiro prático da apresentação
+│   └── REQUISITOS.md           # Correspondência com o enunciado
+├── .github/workflows/
+│   └── testes.yml              # Execução automatizada no GitHub
+├── jest.config.cjs             # Configuração do Jest
+├── package.json                # Scripts e dependências npm
+└── README.md                   # Este guia
+```
+
+## 6. Como os testes são executados no GitHub
+
+O arquivo [testes.yml](.github/workflows/testes.yml) configura o **GitHub Actions**: ao enviar atualizações ao repositório, o GitHub instala as dependências, executa `npm test` e verifica os exemplos. Uma execução verde indica que **os testes automatizados daquele commit foram aprovados**.
+
+Fluxo: **código JavaScript → testes Jest → npm test → GitHub Actions → resultado aprovado**.
+
+## 7. Entrega acadêmica
+
+- **Objetivo 1 — Código legível, defensivo e testável:** atendido pelos módulos de `src/` e pelos 40 testes em `tests/`.
+- **Objetivo 2 — GitHub + README com instruções:** atendido pelo repositório versionado, este README e pelo workflow de testes.
+- **Demonstração sugerida:** abrir um algoritmo e seu teste no VS Code, executar `npm test` e mostrar a aba Actions.
+
+Leia também o [roteiro de apresentação](docs/APRESENTACAO_VSCODE.md), que contém falas curtas e os passos exatos para demonstrar ao professor.
+
+**Repositório da entrega:** https://github.com/Ruan-levi/Entregavel4-Ambientes
